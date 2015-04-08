@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="all">
+	<description>
+        Sales Tax Problem Build File
+    </description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src" />
+	<property name="test" location="test" />
+	<property name="build" location="build" />
+	<property name="lib" location="lib" />
+	<presetdef name="javac">
+		<javac includeantruntime="false" />
+	</presetdef>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+	</target>
+
+	<path id="classpath.base">
+		<fileset dir="${lib}" includes="*.jar" />
+	</path>
+	<path id="classpath.test">
+		<fileset dir="${lib}" includes="*.jar" />
+	</path>
+
+
+	<target name="compile" depends="init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath refid="classpath.base">
+			</classpath>
+		</javac>
+		<javac srcdir="${test}" destdir="${build}">
+			<classpath refid="classpath.base">
+			</classpath>
+		</javac>
+	</target>
+
+
+	<target name="test" depends="compile">
+		<junit>
+			<classpath refid="classpath.test" />
+			<classpath location="${build}">
+			</classpath>
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${build}" includes="**/Test*.class" />
+			</batchtest>
+			
+			<test name="TaxesTest">
+			</test>
+		</junit>
+	</target>
+
+	<target name="all" depends="run-all, test" />
+
+	<macrodef name="view-input">
+		<attribute name="file" />
+		<sequential>
+			<antcall target="compile" />
+			<echo message="Executing  @{file}'" />
+			<java classname="com.bkcompany.sales.SalesTaxApp">
+				<arg line="@{file}" />
+				<classpath location="${build}">
+				</classpath>
+				<classpath>
+					<fileset dir="${lib}">
+						<include name="*.jar" />
+					</fileset>
+				</classpath>
+			</java>
+		</sequential>
+	</macrodef>
+
+	<target name="run-all" depends="compile" description="Runs all input files.">
+		<view-input file="${basedir}/input/Input1.txt" />
+		<view-input file="${basedir}/input/Input2.txt" />
+		<view-input file="${basedir}/input/Input3.txt" />
+	</target>
+
+</project>
