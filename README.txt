@@ -1,12 +1,8 @@
 SALES TAX PROBLEM
 
-Design Patterns used:
-	a) Singleton 	- 	Used to return a single instance of Concrete Product Factory object to create Product objects.
-	b) Abstract Factory Method - FactoryMaker class returns Concrete Product Factory objects at run-time which are responsible for creating
-					Product objects.
-	c) Template		- AbstractTaxCalculator defines abstract primitive operations that concrete subclasses define to implement steps of an
-				algorithm (calculate() method implemented by sub-classes).
-	
+Solution for the Sales Tax Problem has been designed and developed based on Object-Oriented
+Design principles and selected Design patterns as explained below.
+
 Object Oriented design aspects:
 	a) Inheritance 		-	Inheritance has been widely used in this application. 
 					For e.g.: Book, Food, Medical and Miscellaneous classes extend Product class.
@@ -17,12 +13,22 @@ Object Oriented design aspects:
 	b) Abstraction		- 	Interfaces and Abstract classes have been used to provide Abstraction - concrete implementation is provided
 					 by sub-classes.
 	e) Follows Open-Closed principle - Open for extension and Closed for modifications.
+	
+Design Patterns used:
+	a) Singleton 	- 	Used to return a single instance of Concrete Product Factory object to create Product objects. 
+				There is no need to create multiple Concrete Factory objects for creating Product objects. 
+				Only one instance would suffice.
+	b) Abstract Factory Method - FactoryMaker class returns Concrete Product Factory objects at run-time which are 
+					responsible for creating Product objects. Client doesn't need to know underlying Product 
+					types and uses FactoryMaker to create Products.
+	c) Template	- 	AbstractTaxCalculator defines abstract primitive operations that concrete subclasses define to
+				implement steps of an algorithm (calculate() method implemented by sub-classes).
 
-Configurable:	
+How is the application Configurable?	
 	a) Any new TaxCalculator can be easily configurable by extending either SalesTaxCalculator or AbstractTaxCalculator
 	b) New Products can be easily added by extending Product and ProductFactory classes
 	c) Input data is not hardcoded. Instead, input files have been provided to easily change the data and run the app.
-
+	
 Classes Used:
 
 Product			- 	Abstract class with properties name and price 
