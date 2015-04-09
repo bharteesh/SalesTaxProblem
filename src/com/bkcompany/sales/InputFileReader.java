@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import com.bkcompany.sales.billing.Basket;
 import com.bkcompany.sales.billing.BasketItem;
+import com.bkcompany.sales.exception.SalesTaxException;
 import com.bkcompany.sales.factory.FactoryMaker;
 import com.bkcompany.sales.products.Product;
 
@@ -22,7 +23,9 @@ public class InputFileReader {
 	
 	private Reader reader;
 	
-	
+	public InputFileReader(){
+		
+	}
 
 	public InputFileReader(Reader reader) {
 		super();
@@ -32,8 +35,9 @@ public class InputFileReader {
 	/**
 	 * Add products to Basket
 	 * @return Basket details to client
+	 * @throws SalesTaxException 
 	 */
-	public Basket getBasketDetails(){
+	public Basket getBasketDetails() throws SalesTaxException{
 		Scanner scanner = new Scanner(reader);
 		scanner.useDelimiter("\n");
 		Basket basket = new Basket();
@@ -57,14 +61,15 @@ public class InputFileReader {
 
 	/**
 	 * Creates new products from factory
-	 * 	- also adds TaxCalculator based on the type of Product at Run-time
+	 * 	- also adds applicable TaxCalculator based on the type of Product at Run-time
 	 * @param description
 	 * @param basePrice
 	 * @param quantity
 	 * @return
+	 * @throws SalesTaxException 
 	 */
-	private BasketItem createProduct(String description, String basePrice, String quantity) {
-		
+	public BasketItem createProduct(String description, String basePrice, String quantity) throws SalesTaxException {
+			
 		if(description.toLowerCase().contains(Constants.BOOK)){
 			Product p = FactoryMaker.getFactory(Constants.BOOK).createProduct(description, new BigDecimal(basePrice));
 			return new BasketItem(p, Integer.valueOf(quantity)); 
