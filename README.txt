@@ -79,7 +79,8 @@ How to run the application?
 		details) from "SalesTaxProblem/input" directory and generates output. Test cases would be executed as well.
 			(OR)
 		-- Import Project in Eclipse and run the Ant build file : build.xml
-	
+	Note: bin directory is the output directory created from Eclipse
+	      build directory is the output directory created from Ant build.
 Improvisations
 	a) More test cases could have been created
 	b) XML could have been used for Input data
