@@ -1,5 +1,27 @@
 SALES TAX PROBLEM
 
+Design Patterns used:
+	a) Singleton 	- 	Used to return a single instance of Concrete Product Factory object to create Product objects.
+	b) Abstract Factory Method - FactoryMaker class returns Concrete Product Factory objects at run-time which are responsible for creating
+					Product objects.
+	c) Template		- AbstractTaxCalculator defines abstract primitive operations that concrete subclasses define to implement steps of an
+				algorithm (calculate() method implemented by sub-classes).
+	
+Object Oriented design aspects:
+	a) Inheritance 		-	Inheritance has been widely used in this application. 
+					For e.g.: Book, Food, Medical and Miscellaneous classes extend Product class.
+	b) Encapsulation	- 	Variables and Methods have been carefully designed to protect data and behavior by applying private, 
+					protected and public modifiers.
+	c) Polymorphism		- 	When creating new BasketItem objects, eligible tax calculators are also associated with the Product. So, the
+					 method which calculates tax is determined at runtime.
+	b) Abstraction		- 	Interfaces and Abstract classes have been used to provide Abstraction - concrete implementation is provided
+					 by sub-classes.
+	e) Follows Open-Closed principle - Open for extension and Closed for modifications.
+
+Configurable:	
+	a) Any new TaxCalculator can be easily configurable by extending either SalesTaxCalculator or AbstractTaxCalculator
+	b) New Products can be easily added by extending Product and ProductFactory classes
+	c) Input data is not hardcoded. Instead, input files have been provided to easily change the data and run the app.
 
 Classes Used:
 
@@ -41,30 +63,7 @@ SalesTaxException	- 	Custom Exception class
 
 SalesTaxApp 		- 	Main class which accepts one argument which would be an input file containing list of items with quantity and price.
 				Calls checkout() method on Basket object.
-						
-Design Patterns used:
-	a) Singleton 	- 	Used to return a single instance of Concrete Product Factory object to create Product objects.
-	b) Abstract Factory Method - FactoryMaker class returns Concrete Product Factory objects at run-time which are responsible for creating
-					Product objects.
-	c) Template		- AbstractTaxCalculator defines abstract primitive operations that concrete subclasses define to implement steps of an
-				algorithm (calculate() method implemented by sub-classes).
-	
-Object Oriented design aspects:
-	a) Inheritance 		-	Inheritance has been widely used in this application. 
-					For e.g.: Book, Food, Medical and Miscellaneous classes extend Product class.
-	b) Encapsulation	- 	Variables and Methods have been carefully designed to protect data and behavior by applying private, 
-					protected and public modifiers.
-	c) Polymorphism		- 	When creating new BasketItem objects, eligible tax calculators are also associated with the Product. So, the
-					 method which calculates tax is determined at runtime.
-	b) Abstraction		- 	Interfaces and Abstract classes have been used to provide Abstraction - concrete implementation is provided
-					 by sub-classes.
-	e) Follows Open-Closed principle - Open for extension and Closed for modifications.
-
-Configurable:	
-	a) Any new TaxCalculator can be easily configurable by extending either SalesTaxCalculator or AbstractTaxCalculator
-	b) New Products can be easily added by extending Product and ProductFactory classes
-	c) Input data is not hardcoded. Instead, input files have been provided to easily change the data and run the app.
-	
+					
 
 How to run the application?
 
