@@ -6,12 +6,12 @@ Design principles and selected Design patterns as explained below.
 Object Oriented design aspects:
 	a) Inheritance 		-	Inheritance has been widely used in this application. 
 					For e.g.: Book, Food, Medical and Miscellaneous classes extend Product class.
-	b) Encapsulation	- 	Variables and Methods have been carefully designed to protect data and behavior by applying private, 
-					protected and public modifiers.
-	c) Polymorphism		- 	When creating new BasketItem objects, eligible tax calculators are also associated with the Product. So, the
-					 method which calculates tax is determined at runtime.
-	b) Abstraction		- 	Interfaces and Abstract classes have been used to provide Abstraction - concrete implementation is provided
-					 by sub-classes.
+	b) Encapsulation	- 	Variables and Methods have been carefully designed to protect data and behavior by 
+					applying private, protected and public modifiers.
+	c) Polymorphism		- 	When creating new BasketItem objects, eligible tax calculators are also associated with
+					the Product. So, the method which calculates tax is determined at runtime.
+	b) Abstraction		- 	Interfaces and Abstract classes have been used to provide Abstraction - concrete 
+					implementation is provided by sub-classes.
 	e) Follows Open-Closed principle - Open for extension and Closed for modifications.
 	
 Design Patterns used:
@@ -67,16 +67,16 @@ Constants		- 	Includes Constants used in the application
 
 SalesTaxException	- 	Custom Exception class
 
-SalesTaxApp 		- 	Main class which accepts one argument which would be an input file containing list of items with quantity and price.
-				Calls checkout() method on Basket object.
+SalesTaxApp 		- 	Main class which accepts one argument which would be an input file containing list of items 
+				with quantity and price. Calls checkout() method on Basket object.
 					
 
 How to run the application?
 
 	a) Unzip SalesTaxProblem.zip file
 		-- From the terminal, navigate to SalesTaxProblem directory and run the command: ant
-			which would compile the source files, reads 3 input files (which contains 3 different Shopping basket details) 
-			from "SalesTaxProblem/input" directory and generates output. Test cases would be executed as well.
+		which would compile the source files, reads 3 input files (which contains 3 different Shopping basket 
+		details) from "SalesTaxProblem/input" directory and generates output. Test cases would be executed as well.
 			(OR)
 		-- Import Project in Eclipse and run the Ant build file : build.xml
 	
